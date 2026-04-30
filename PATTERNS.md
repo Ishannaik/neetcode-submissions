@@ -53,3 +53,66 @@ Think of it as **two pointers shrinking an inclusive range until the answer is s
 - LC 69 mySqrt (floor sqrt) → return r
 - LC 35 search-insert-position → return l (first index where target could go)
 - LC 704 binary-search → return m on exact match, else -1
+
+---
+
+## Group Anagrams (`anagram-groups` / LC 49) — `defaultdict` + sorted-key
+
+This problem flagged two Python concepts I didn't know on Apr 30 cold review.
+
+```python
+from collections import defaultdict
+
+class Solution:
+    def groupAnagrams(self, strs):
+        groups = defaultdict(list)
+        for s in strs:
+            key = ''.join(sorted(s))   # 'eat' → 'aet'
+            groups[key].append(s)
+        return list(groups.values())
+```
+
+### `defaultdict(list)` — what it is
+
+A `dict` that auto-creates a default value (here, an empty list) when you access a missing key. So `groups['aet'].append('eat')` doesn't error on first 'aet' — it creates `[]` automatically, then appends.
+
+The plain-dict alternative is more verbose:
+
+```python
+groups = {}
+for s in strs:
+    key = ''.join(sorted(s))
+    if key not in groups:
+        groups[key] = []
+    groups[key].append(s)
+```
+
+`defaultdict` removes the if-check. **Whenever you're grouping items by a key, reach for `defaultdict(list)` (or `defaultdict(int)` for counts, `defaultdict(set)` for unique).**
+
+### `sorted(s)` — sorting a string
+
+`sorted()` works on any iterable (strings included). Returns a **list of characters**, not a string. So:
+
+```python
+sorted('eat')         # → ['a', 'e', 't']
+''.join(sorted('eat')) # → 'aet'
+```
+
+`''.join(...)` is the idiom to recombine the sorted chars into a string.
+
+### Alternative key — char-frequency tuple
+
+If `sorted` feels expensive (it's O(k log k) per string for length-k strings), use a frequency tuple:
+
+```python
+key = tuple(s.count(c) for c in 'abcdefghijklmnopqrstuvwxyz')
+```
+
+That's O(26·k) per string but generates the same key for anagrams. For LC 49 either approach is acceptable; sorted-key is simpler to read.
+
+### Pattern recognition cue
+
+When the problem says "group / bucket / partition X by some property," the template is:
+1. `defaultdict(list)`
+2. Compute the bucket key per item
+3. Return `list(groups.values())`
