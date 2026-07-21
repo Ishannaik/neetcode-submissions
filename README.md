@@ -6,16 +6,16 @@
 
 ## What is this?
 
-[NeetCode.io](https://neetcode.io) is a coding interview preparation platform featuring curated problems, video solutions, and an in-browser code editor. This repository is automatically populated with your accepted (or all) solutions using the **GitHub Sync** feature.
+[NeetCode.io](https://neetcode.io) is a coding interview prep platform with curated problems, video solutions, and an in-browser code editor. The **GitHub Sync** feature fills this repository with your accepted solutions, or all of them if you prefer.
 
 ---
 
 ## How GitHub Sync works
 
 1. **Connect your GitHub account** on [neetcode.io/profile/github](https://neetcode.io/profile/github).
-2. **Auto-commit** — every time you submit a solution on NeetCode, it is pushed here automatically (configurable by status).
-3. **Bulk Sync** — push all your past solutions at once from the GitHub settings page.
-4. **Manual sync** — from the submission history panel on any problem page, sync or remove individual submissions.
+2. **Auto-commit.** Every solution you submit on NeetCode pushes here automatically. You can configure which statuses get committed.
+3. **Bulk Sync.** Push all your past solutions at once from the GitHub settings page.
+4. **Manual sync.** Sync or remove individual submissions from the submission history panel on any problem page.
 
 ---
 
@@ -62,10 +62,10 @@ Python For Beginners/python-hello-world/submission-0.py
 
 Manage your sync preferences at [neetcode.io/profile/github](https://neetcode.io/profile/github):
 
-- **Auto-commit toggle** — enable or disable automatic commits on submission
-- **Status filter** — sync all submissions or accepted only
-- **Rename repository** — rename this repo or start fresh with a new one
-- **Bulk Sync** — push all past solutions at once (rate-limited)
+- **Auto-commit toggle.** Turn automatic commits on submission on or off.
+- **Status filter.** Sync all submissions or accepted only.
+- **Rename repository.** Rename this repo or start fresh with a new one.
+- **Bulk Sync.** Push all past solutions at once (rate-limited).
 
 ---
 
